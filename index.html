@@ -779,13 +779,13 @@
       console.log("Audio play error:", err);
     });
   }
- 
+
   function pauseMusic() {
     bgMusic.pause();
     musicIcon.textContent = '🔇';
     musicToggleBtn.classList.remove('playing');
     isPlaying = false;
-  }
+  }  
  
   function toggleMusic() {
     if (isPlaying) {
