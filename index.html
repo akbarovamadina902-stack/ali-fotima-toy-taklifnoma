@@ -16,8 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream-bg: #F8F4EE;
-    --marble-card: #FAF6F0;
     --ink: #2C221E;
     --ink-soft: #6E6059;
     --gold: #D4AF37;
@@ -69,29 +67,27 @@
     font-size: 0.9rem; 
   }
 
-  /* ===== RASMDAGI BIR XIL MARMAR + IPAK + OLTIN BARGLAR RAMKASI ===== */
+  /* ===== AYNAN NAMUNADAGI BIR XIL MARMAR OLTIN RAMKA ===== */
   .luxury-frame {
     position: relative;
-    background: 
-      radial-gradient(circle at 10% 20%, rgba(240, 230, 215, 0.6) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(240, 230, 215, 0.6) 0%, transparent 40%),
-      linear-gradient(135deg, #FAF7F2 0%, #F5EDE0 50%, #FAF5EE 100%);
+    /* Marmar fon beriladi */
+    background: #FAF6F0 url('https://i.ibb.co/L5M0kK7/marble-bg.jpg') center/cover no-repeat;
     border-radius: 20px;
-    padding: 55px 32px;
+    padding: 65px 35px;
     margin: 25px auto;
     box-shadow: 
-      0 15px 45px rgba(154, 116, 34, 0.12),
+      0 15px 45px rgba(154, 116, 34, 0.15),
       inset 0 0 40px rgba(255, 255, 255, 0.8);
     overflow: hidden;
     z-index: 1;
   }
 
-  /* Ikkilangan Nozik Oltin Chegara (Double Thin Gold Border) */
+  /* Ikkilangan Juda Nozik Oltin Chegara (Double Thin Gold Frame) */
   .luxury-frame::before {
     content: "";
     position: absolute;
-    inset: 14px;
-    border: 1px solid rgba(212, 175, 55, 0.6);
+    inset: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.75);
     border-radius: 12px;
     pointer-events: none;
     z-index: 3;
@@ -99,48 +95,51 @@
   .luxury-frame::after {
     content: "";
     position: absolute;
-    inset: 18px;
-    border: 1px solid rgba(212, 175, 55, 0.35);
+    inset: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 10px;
     pointer-events: none;
     z-index: 3;
   }
 
-  /* YUQORI CHAP VA PASTKI O'NG IPAK TO'L QATLAMNOMA (SILK DRAPES) */
-  .silk-top-left {
+  /* BURCHAKDAGI OLTIN IPAK TO'LQINLARI VA BARGLAR (NAMUNADAGI KABI BIR XIL) */
+  .corner-decor {
     position: absolute;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* Yuqori Chap Burchak - Ipak To'lqini */
+  .decor-top-left {
     top: 0; left: 0;
-    width: 170px; height: 170px;
-    pointer-events: none;
-    z-index: 4;
+    width: 180px; height: 180px;
+    background: url('https://i.ibb.co/313tS2N/gold-silk-top-left.png') top left/contain no-repeat;
   }
-  .silk-bottom-right {
-    position: absolute;
+
+  /* Pastki O'ng Burchak - Ipak To'lqini */
+  .decor-bottom-right {
     bottom: 0; right: 0;
-    width: 170px; height: 170px;
+    width: 180px; height: 180px;
+    background: url('https://i.ibb.co/313tS2N/gold-silk-top-left.png') top left/contain no-repeat;
     transform: rotate(180deg);
-    pointer-events: none;
-    z-index: 4;
   }
 
-  /* YUQORI O'NG VA PASTKI CHAP OLTIN BARGLAR NOVDASI (GOLD LEAVES) */
-  .leaf-top-right {
-    position: absolute;
-    top: -5px; right: -5px;
-    width: 130px; height: 130px;
-    pointer-events: none;
-    z-index: 4;
-  }
-  .leaf-bottom-left {
-    position: absolute;
-    bottom: -5px; left: -5px;
-    width: 130px; height: 130px;
-    transform: rotate(180deg);
-    pointer-events: none;
-    z-index: 4;
+  /* Yuqori O'ng Burchak - Oltin Leaf (Barglar) */
+  .decor-top-right {
+    top: 0; right: 0;
+    width: 150px; height: 150px;
+    background: url('https://i.ibb.co/q1mRzbd/gold-leaf-branch.png') top right/contain no-repeat;
   }
 
-  /* YORQIN PORLASH NQTALARI (GLOW SPARKLES) */
+  /* Pastki Chap Burchak - Oltin Leaf (Barglar) */
+  .decor-bottom-left {
+    bottom: 0; left: 0;
+    width: 150px; height: 150px;
+    background: url('https://i.ibb.co/q1mRzbd/gold-leaf-branch.png') top right/contain no-repeat;
+    transform: rotate(180deg);
+  }
+
+  /* Yorqin Nuktalar / Porlash (Sparkles) */
   .sparkle {
     position: absolute;
     width: 8px; height: 8px;
@@ -150,8 +149,8 @@
     pointer-events: none;
     z-index: 5;
   }
-  .sp-1 { top: 14px; right: 130px; }
-  .sp-2 { bottom: 14px; left: 130px; }
+  .sp-1 { top: 18px; right: 140px; }
+  .sp-2 { bottom: 18px; left: 140px; }
 
   /* ===== OLTIN ZARRACHALAR ANIMATSIYASI ===== */
   .hearts-container {
@@ -512,18 +511,18 @@
     #hero h1 { font-size: 2.5rem; gap: 6px; }
     #hero .amp { font-size: 2.3rem; }
     section { padding: 30px 12px; }
-    .luxury-frame { padding: 40px 16px; }
+    .luxury-frame { padding: 45px 16px; }
     .card { width: 100%; max-width: 260px; }
     .promo-title { font-size: 1.35rem; }
     .social-btn { width: 100%; max-width: 250px; }
-    .silk-top-left, .silk-bottom-right { width: 120px; height: 120px; }
-    .leaf-top-right, .leaf-bottom-left { width: 95px; height: 95px; }
+    .decor-top-left, .decor-bottom-right { width: 130px; height: 130px; }
+    .decor-top-right, .decor-bottom-left { width: 110px; height: 110px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- OLTIN GRADIENT TA'RIFI -->
+  <!-- OLTIN GRADIENT SVG -->
   <svg style="width:0;height:0;position:absolute;">
     <defs>
       <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -532,30 +531,6 @@
         <stop offset="70%" stop-color="#AA771C" />
         <stop offset="100%" stop-color="#8C6211" />
       </linearGradient>
-
-      <!-- IPAK DAPERIYA SVG SHABLONI -->
-      <g id="silk-drape-svg">
-        <path d="M0,0 C60,5 120,35 160,90 C120,110 70,120 0,110 Z" fill="url(#goldGradient)" opacity="0.35"/>
-        <path d="M0,0 C40,25 90,65 125,125 C85,140 35,145 0,140 Z" fill="url(#goldGradient)" opacity="0.55"/>
-        <path d="M0,0 C20,35 50,90 85,160 C50,165 15,160 0,155 Z" fill="url(#goldGradient)" opacity="0.85"/>
-        <path d="M0,0 C70,10 130,50 170,110" stroke="#FCF6BA" stroke-width="2" fill="none" opacity="0.9"/>
-        <path d="M0,0 C50,30 100,80 135,140" stroke="#FCF6BA" stroke-width="1.5" fill="none" opacity="0.8"/>
-      </g>
-
-      <!-- OLTIN BARGLAR SHABLONI -->
-      <g id="gold-leaves-svg">
-        <path d="M110,10 Q80,40 20,110" stroke="url(#goldGradient)" stroke-width="2.5" fill="none"/>
-        <!-- Leaf 1 -->
-        <path d="M100,18 C115,12 125,5 125,5 C125,5 120,18 108,24 C96,30 100,18 100,18 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 2 -->
-        <path d="M85,32 C102,28 115,22 115,22 C115,22 106,36 94,40 C82,44 85,32 85,32 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 3 -->
-        <path d="M70,48 C88,46 102,42 102,42 C102,42 91,56 78,58 C65,60 70,48 70,48 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 4 -->
-        <path d="M52,68 C70,68 84,66 84,66 C84,66 71,78 58,78 C45,78 52,68 52,68 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 5 -->
-        <path d="M35,88 C52,90 64,90 64,90 C64,90 50,100 38,98 C26,96 35,88 35,88 Z" fill="url(#goldGradient)"/>
-      </g>
     </defs>
   </svg>
 
@@ -583,10 +558,11 @@
   <!-- ============ COVER / ENVELOPE ============ -->
   <div id="cover">
     <div class="cover-inner luxury-frame">
-      <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-      <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-      <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-      <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+      <!-- Burchakdagi Oltin Bezaklar -->
+      <div class="corner-decor decor-top-left"></div>
+      <div class="corner-decor decor-bottom-right"></div>
+      <div class="corner-decor decor-top-right"></div>
+      <div class="corner-decor decor-bottom-left"></div>
       <div class="sparkle sp-1"></div>
       <div class="sparkle sp-2"></div>
 
@@ -626,11 +602,11 @@
 
     <section id="hero" class="reveal">
       <div class="luxury-frame">
-        <!-- Rasm bezaklari -->
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <!-- Burchakdagi Oltin Bezaklar -->
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
@@ -651,10 +627,11 @@
 
     <section id="details" class="reveal">
       <div class="luxury-frame">
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <!-- Burchakdagi Oltin Bezaklar -->
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
@@ -689,10 +666,11 @@
 
     <section id="location" class="reveal">
       <div class="luxury-frame">
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <!-- Burchakdagi Oltin Bezaklar -->
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
@@ -714,10 +692,11 @@
 
     <section id="guestbook" class="reveal">
       <div class="luxury-frame">
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <!-- Burchakdagi Oltin Bezaklar -->
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
