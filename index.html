@@ -16,17 +16,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream-bg: #FAF6F0;
-    --marble-light: #F6F0E6;
-    --marble-card: #FFFFFF;
+    --cream-bg: #F8F4EE;
+    --marble-card: #FAF6F0;
     --ink: #2C221E;
     --ink-soft: #6E6059;
     --gold: #D4AF37;
     --gold-light: #FDF3BE;
+    --gold-dark: #9A7422;
     --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
     --gold-btn: linear-gradient(120deg, #D4AF37, #AA771C);
-    --gold-dark: #8C6211;
-    --line: rgba(212, 175, 55, 0.4);
     --white: #FFFFFF;
   }
 
@@ -34,7 +32,7 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: radial-gradient(circle at center, #FFFFFF 0%, #FAF4EB 60%, #EFE5D8 100%);
+    background: radial-gradient(circle at center, #FFFFFF 0%, #FAF4EC 60%, #EFE4D4 100%);
     color: var(--ink);
     font-family: 'Jost', sans-serif;
     font-weight: 400;
@@ -68,48 +66,92 @@
   }
   .divider .heart { 
     color: var(--gold); 
-    font-size: 1rem; 
+    font-size: 0.9rem; 
   }
 
-  /* ===== OLTIN MARMAR RAMKA DIZAYNI (GOLD MARBLE FRAME) ===== */
+  /* ===== RASMDAGI BIR XIL MARMAR + IPAK + OLTIN BARGLAR RAMKASI ===== */
   .luxury-frame {
     position: relative;
-    background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #FAF5ED 70%, #F1E5D5 100%);
-    border-radius: 24px;
-    padding: 50px 30px;
-    margin: 20px auto;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(240, 230, 215, 0.6) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(240, 230, 215, 0.6) 0%, transparent 40%),
+      linear-gradient(135deg, #FAF7F2 0%, #F5EDE0 50%, #FAF5EE 100%);
+    border-radius: 20px;
+    padding: 55px 32px;
+    margin: 25px auto;
     box-shadow: 
-      0 20px 50px rgba(140, 98, 17, 0.12),
-      inset 0 0 0 1px var(--gold-light),
-      inset 0 0 0 4px rgba(212, 175, 55, 0.25);
-    border: 2px solid transparent;
-    background-clip: padding-box;
+      0 15px 45px rgba(154, 116, 34, 0.12),
+      inset 0 0 40px rgba(255, 255, 255, 0.8);
     overflow: hidden;
+    z-index: 1;
   }
 
-  /* Oltin burchak bezaklari (SVG Corner Ornaments) */
-  .luxury-frame::before, .luxury-frame::after {
+  /* Ikkilangan Nozik Oltin Chegara (Double Thin Gold Border) */
+  .luxury-frame::before {
     content: "";
     position: absolute;
-    width: 70px;
-    height: 70px;
+    inset: 14px;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    border-radius: 12px;
     pointer-events: none;
-    background-size: contain;
-    background-repeat: no-repeat;
+    z-index: 3;
+  }
+  .luxury-frame::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 3;
   }
 
-  /* RAMKA BURCHAKLARIDAGI OLTIN GUL ORNAMENTLARI */
-  .corner-ornament {
+  /* YUQORI CHAP VA PASTKI O'NG IPAK TO'L QATLAMNOMA (SILK DRAPES) */
+  .silk-top-left {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    top: 0; left: 0;
+    width: 170px; height: 170px;
     pointer-events: none;
-    z-index: 2;
+    z-index: 4;
   }
-  .corner-tl { top: 12px; left: 12px; }
-  .corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
-  .corner-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-  .corner-br { bottom: 12px; right: 12px; transform: scale(-1); }
+  .silk-bottom-right {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 170px; height: 170px;
+    transform: rotate(180deg);
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* YUQORI O'NG VA PASTKI CHAP OLTIN BARGLAR NOVDASI (GOLD LEAVES) */
+  .leaf-top-right {
+    position: absolute;
+    top: -5px; right: -5px;
+    width: 130px; height: 130px;
+    pointer-events: none;
+    z-index: 4;
+  }
+  .leaf-bottom-left {
+    position: absolute;
+    bottom: -5px; left: -5px;
+    width: 130px; height: 130px;
+    transform: rotate(180deg);
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* YORQIN PORLASH NQTALARI (GLOW SPARKLES) */
+  .sparkle {
+    position: absolute;
+    width: 8px; height: 8px;
+    background: radial-gradient(circle, #FFF 10%, #FCF6BA 40%, transparent 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #FCF6BA, 0 0 18px #D4AF37;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .sp-1 { top: 14px; right: 130px; }
+  .sp-2 { bottom: 14px; left: 130px; }
 
   /* ===== OLTIN ZARRACHALAR ANIMATSIYASI ===== */
   .hearts-container {
@@ -124,7 +166,7 @@
   .falling-heart {
     position: absolute;
     top: -30px;
-    width: 18px; height: 18px;
+    width: 16px; height: 16px;
     animation: fallingHearts 11s infinite linear;
     opacity: 0.85;
   }
@@ -180,21 +222,18 @@
   #cover.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
   .cover-inner { 
     text-align: center; 
-    padding: 30px; 
-    max-width: 500px; 
+    padding: 40px 24px; 
+    max-width: 480px; 
     display: flex; 
     flex-direction: column; 
     align-items: center;
-    border: 2px solid var(--gold);
-    border-radius: 28px;
-    background: radial-gradient(circle, #FFFFFF 0%, #FAF6F0 100%);
-    box-shadow: 0 25px 60px rgba(140, 98, 17, 0.2);
+    border-radius: 24px;
     margin: 20px;
     position: relative;
   }
 
   .ring-icon-wrapper {
-    width: 86px; height: 86px;
+    width: 80px; height: 80px;
     margin: 0 auto 16px auto;
     background: linear-gradient(135deg, #FAF6F0, #EFE3D3);
     border-radius: 50%;
@@ -202,15 +241,15 @@
     box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
     border: 2px solid var(--gold-light);
   }
-  .ring-icon-wrapper svg { width: 50px; height: 50px; }
+  .ring-icon-wrapper svg { width: 46px; height: 46px; }
 
-  .cover-inner h1 { font-size: 2.8rem; font-weight: 600; margin: 8px 0 10px; line-height: 1.15; color: var(--ink); }
-  .cover-inner p.sub { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 26px; font-style: italic; }
+  .cover-inner h1 { font-size: 2.7rem; font-weight: 600; margin: 8px 0 10px; line-height: 1.15; color: var(--ink); }
+  .cover-inner p.sub { color: var(--ink-soft); font-size: 1rem; margin-bottom: 24px; font-style: italic; }
 
   .envelope {
     position: relative;
-    width: 280px; height: 190px;
-    margin: 0 auto 30px;
+    width: 270px; height: 180px;
+    margin: 0 auto 26px;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.3s ease;
@@ -220,9 +259,9 @@
   .env-body {
     position: absolute; inset: 0;
     background: #FFFFFF;
-    border: 2px solid var(--gold);
+    border: 1.5px solid var(--gold);
     border-radius: 12px;
-    box-shadow: 0 20px 45px -15px rgba(180, 140, 50, 0.3);
+    box-shadow: 0 18px 40px -15px rgba(180, 140, 50, 0.28);
     overflow: hidden;
   }
   .env-flap {
@@ -240,16 +279,16 @@
     position: absolute; left: 0; right: 0; top: 58%;
     text-align: center; z-index: 1;
   }
-  .env-names .script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--gold-dark); font-weight: 700; }
-  .env-names .date-sm { font-size: .78rem; letter-spacing: .2em; color: var(--ink-soft); margin-top: 4px; font-weight: 500; }
+  .env-names .script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.45rem; color: var(--gold-dark); font-weight: 700; }
+  .env-names .date-sm { font-size: .75rem; letter-spacing: .2em; color: var(--ink-soft); margin-top: 4px; font-weight: 500; }
   
   .seal {
     position: absolute; left: 50%; top: 56%; transform: translate(-50%,-50%);
-    width: 46px; height: 46px; border-radius: 50%;
+    width: 44px; height: 44px; border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #FCF6BA, #AA771C);
     display: flex; align-items: center; justify-content: center;
-    color: var(--white); font-size: 1.2rem;
-    box-shadow: 0 6px 16px rgba(170, 119, 28, 0.5);
+    color: var(--white); font-size: 1.1rem;
+    box-shadow: 0 6px 16px rgba(170, 119, 28, 0.45);
     z-index: 4;
     border: 1.5px solid var(--gold-light);
     transition: transform .5s ease .3s, opacity .5s ease .3s;
@@ -260,14 +299,14 @@
     border: none; cursor: pointer;
     background: var(--gold-btn);
     color: var(--white);
-    padding: 15px 38px;
+    padding: 14px 36px;
     border-radius: 999px;
     font-family: 'Jost', sans-serif;
     letter-spacing: .18em;
-    font-size: .82rem;
+    font-size: .8rem;
     font-weight: 600;
     text-transform: uppercase;
-    box-shadow: 0 12px 25px -6px rgba(170, 119, 28, 0.6);
+    box-shadow: 0 12px 25px -6px rgba(170, 119, 28, 0.55);
   }
   .cover-hint { margin-top: 12px; font-size: .8rem; color: var(--ink-soft); }
 
@@ -276,12 +315,12 @@
     position: fixed;
     bottom: 24px; right: 24px;
     z-index: 100;
-    width: 52px; height: 52px;
+    width: 50px; height: 50px;
     border-radius: 50%;
     background: linear-gradient(135deg, #FFFFFF, #F5EBE0);
     border: 2px solid var(--gold);
     color: var(--gold-dark);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(170, 119, 28, 0.35);
     display: flex; align-items: center; justify-content: center;
@@ -304,202 +343,220 @@
   }
   #main.show { opacity: 1; transform: none; }
 
-  section { position: relative; padding: 70px 20px; max-width: 860px; margin: 0 auto; text-align: center; }
+  section { position: relative; padding: 40px 18px; max-width: 800px; margin: 0 auto; text-align: center; }
 
   .reveal {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(35px);
     transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: opacity, transform;
   }
   .reveal.active { opacity: 1; transform: translateY(0); }
 
-  #hero { padding-top: 80px; text-align: center; }
+  #hero { padding-top: 50px; text-align: center; }
   #hero h1 { 
-    font-size: 3.8rem; 
+    font-size: 3.6rem; 
     font-weight: 600; 
     letter-spacing: .02em; 
-    margin: 16px 0 16px; 
+    margin: 14px 0 14px; 
     color: var(--ink); 
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
   }
 
   #hero .amp {
     font-family: 'Alex Brush', 'Great Vibes', cursive;
-    color: var(--gold);
+    color: var(--gold-dark);
     font-weight: 400;
-    font-size: 3.6rem;
+    font-size: 3.4rem;
     line-height: 1;
     display: inline-block;
-    padding: 0 6px;
+    padding: 0 4px;
   }
 
-  #hero p.tag { max-width: 480px; margin: 0 auto 26px; color: var(--ink-soft); font-style: italic; font-size: 1.1rem; line-height: 1.6; }
+  #hero p.tag { max-width: 460px; margin: 0 auto 24px; color: var(--ink-soft); font-style: italic; font-size: 1.05rem; line-height: 1.6; }
 
-  .countdown { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+  .countdown { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
   .count-box {
-    background: var(--white); 
-    border: 1.5px solid var(--gold-light); 
-    border-radius: 16px;
-    padding: 18px 20px; min-width: 86px;
-    box-shadow: 0 10px 25px -10px rgba(212, 175, 55, 0.25);
+    background: rgba(255, 255, 255, 0.85); 
+    border: 1px solid rgba(212, 175, 55, 0.4); 
+    border-radius: 14px;
+    padding: 16px 18px; min-width: 80px;
+    box-shadow: 0 8px 20px -8px rgba(212, 175, 55, 0.2);
     transition: transform 0.3s ease;
   }
-  .count-box:hover { transform: translateY(-4px); }
-  .count-box .num { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--gold-dark); font-weight: 700; }
-  .count-box .lbl { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; font-weight: 600; }
+  .count-box:hover { transform: translateY(-3px); }
+  .count-box .num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-dark); font-weight: 700; }
+  .count-box .lbl { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); margin-top: 3px; font-weight: 600; }
 
   /* CARD TAFSILOTLARI */
-  .cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+  .cards { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
   .card {
-    background: var(--white); 
-    border: 1.5px solid var(--gold-light); 
-    border-radius: 18px;
-    padding: 28px 22px; width: 220px;
-    box-shadow: 0 14px 28px -15px rgba(180, 140, 50, 0.2);
+    background: rgba(255, 255, 255, 0.9); 
+    border: 1px solid rgba(212, 175, 55, 0.4); 
+    border-radius: 16px;
+    padding: 24px 20px; width: 210px;
+    box-shadow: 0 10px 24px -12px rgba(180, 140, 50, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 32px -10px rgba(180, 140, 50, 0.35);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 28px -10px rgba(180, 140, 50, 0.3);
   }
   .card .ic {
-    width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 14px;
+    width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 12px;
     background: linear-gradient(140deg, #FAF6F0, #EFE3D3);
     border: 1px solid var(--gold-light);
-    display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.2rem;
   }
   .card .eyebrow { display: block; margin-bottom: 6px; }
-  .card .main-txt { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; color: var(--ink); }
-  .card .sub-txt { color: var(--ink-soft); font-size: .88rem; margin-top: 4px; }
-  .addr-line { margin-top: 30px; color: var(--ink-soft); font-size: .98rem; font-weight: 400; }
+  .card .main-txt { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+  .card .sub-txt { color: var(--ink-soft); font-size: .85rem; margin-top: 4px; }
+  .addr-line { margin-top: 26px; color: var(--ink-soft); font-size: .95rem; font-weight: 400; }
 
   /* MAP SECTION */
   .map-wrap {
-    margin-top: 30px; border-radius: 20px; overflow: hidden; border: 2px solid var(--gold);
-    box-shadow: 0 20px 40px -15px rgba(180, 140, 50, 0.25);
+    margin-top: 26px; border-radius: 16px; overflow: hidden; border: 1.5px solid var(--gold);
+    box-shadow: 0 16px 35px -15px rgba(180, 140, 50, 0.25);
   }
-  .map-wrap iframe { width: 100%; height: 350px; border: 0; display: block; }
+  .map-wrap iframe { width: 100%; height: 320px; border: 0; display: block; }
   .maps-btn {
-    display: inline-block; margin-top: 24px; text-decoration: none;
+    display: inline-block; margin-top: 22px; text-decoration: none;
     background: var(--gold-btn);
-    color: var(--white); padding: 14px 34px; border-radius: 999px;
-    letter-spacing: .14em; font-size: .8rem; font-weight: 600; text-transform: uppercase;
+    color: var(--white); padding: 13px 32px; border-radius: 999px;
+    letter-spacing: .14em; font-size: .78rem; font-weight: 600; text-transform: uppercase;
     box-shadow: 0 10px 20px rgba(170, 119, 28, 0.35);
   }
 
   /* GUESTBOOK */
   .gb-form {
-    max-width: 500px; margin: 30px auto 40px; background: var(--white);
-    border: 1.5px solid var(--gold-light); border-radius: 20px; padding: 28px;
-    box-shadow: 0 16px 35px -15px rgba(180, 140, 50, 0.2); text-align: left;
+    max-width: 480px; margin: 26px auto 35px; background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 16px; padding: 24px;
+    box-shadow: 0 14px 30px -15px rgba(180, 140, 50, 0.2); text-align: left;
   }
-  .field { margin-bottom: 18px; }
-  .field label { display: block; font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; font-weight: 600; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; font-weight: 600; }
   .field input, .field textarea {
-    width: 100%; border: 1.5px solid var(--gold-light); background: #FAF7F2;
-    border-radius: 10px; padding: 12px 14px; font-family: 'Jost', sans-serif; font-size: .98rem; color: var(--ink);
+    width: 100%; border: 1px solid rgba(212, 175, 55, 0.4); background: #FAF7F2;
+    border-radius: 8px; padding: 11px 13px; font-family: 'Jost', sans-serif; font-size: .95rem; color: var(--ink);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
   .field input:focus, .field textarea:focus {
     outline: none;
     border-color: var(--gold);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
   }
-  .field textarea { resize: vertical; min-height: 80px; }
+  .field textarea { resize: vertical; min-height: 75px; }
   .submit-btn {
-    width: 100%; margin-top: 8px; border: none; cursor: pointer;
+    width: 100%; margin-top: 6px; border: none; cursor: pointer;
     background: var(--gold-btn);
-    color: var(--white); padding: 15px; border-radius: 10px;
-    letter-spacing: .14em; font-size: .82rem; font-weight: 600; text-transform: uppercase;
+    color: var(--white); padding: 14px; border-radius: 8px;
+    letter-spacing: .14em; font-size: .8rem; font-weight: 600; text-transform: uppercase;
     box-shadow: 0 8px 18px rgba(170, 119, 28, 0.35);
   }
   .submit-btn:disabled { opacity: .6; cursor: default; animation: none !important; }
-  .status-msg { margin-top: 14px; font-size: .88rem; text-align: center; color: var(--gold-dark); min-height: 1.2em; font-weight: 500; }
-  .gb-list { max-width: 540px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  .status-msg { margin-top: 12px; font-size: .85rem; text-align: center; color: var(--gold-dark); min-height: 1.2em; font-weight: 500; }
+  .gb-list { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
   .gb-entry {
-    background: var(--white); border: 1.5px solid var(--gold-light); border-radius: 14px;
-    padding: 18px 22px; text-align: left; box-shadow: 0 4px 15px rgba(180, 140, 50, 0.08);
+    background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 12px;
+    padding: 16px 20px; text-align: left; box-shadow: 0 4px 12px rgba(180, 140, 50, 0.08);
   }
   .gb-entry .top { display: flex; justify-content: space-between; align-items: baseline; }
-  .gb-entry .name { font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--gold-dark); font-size: 1.2rem; }
-  .gb-entry .time { font-size: .75rem; color: var(--ink-soft); }
-  .gb-entry .msg { margin-top: 6px; font-style: italic; color: var(--ink-soft); font-size: .95rem; line-height: 1.5; }
-  .gb-empty { text-align: center; color: var(--ink-soft); font-style: italic; font-size: .95rem; }
+  .gb-entry .name { font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--gold-dark); font-size: 1.15rem; }
+  .gb-entry .time { font-size: .72rem; color: var(--ink-soft); }
+  .gb-entry .msg { margin-top: 5px; font-style: italic; color: var(--ink-soft); font-size: .92rem; line-height: 1.45; }
+  .gb-empty { text-align: center; color: var(--ink-soft); font-style: italic; font-size: .92rem; }
 
   /* PROMO */
-  #promo { padding: 30px 16px; }
+  #promo { padding: 20px 16px; }
   .promo-card {
-    background: var(--white);
-    border: 2px solid var(--gold);
-    border-radius: 26px;
-    padding: 42px 24px;
-    max-width: 660px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1.5px solid var(--gold);
+    border-radius: 22px;
+    padding: 36px 20px;
+    max-width: 620px;
     margin: 0 auto;
-    box-shadow: 0 20px 45px -15px rgba(180, 140, 50, 0.25);
+    box-shadow: 0 16px 38px -15px rgba(180, 140, 50, 0.25);
     text-align: center;
   }
   .promo-icon {
-    width: 56px; height: 56px;
+    width: 50px; height: 50px;
     background: linear-gradient(140deg, #FAF6F0, #EFE3D3);
     border-radius: 50%;
     border: 1px solid var(--gold-light);
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px; color: var(--gold-dark);
-    box-shadow: 0 4px 12px rgba(180, 140, 50, 0.15);
+    margin: 0 auto 14px; color: var(--gold-dark);
+    box-shadow: 0 4px 10px rgba(180, 140, 50, 0.15);
   }
-  .promo-icon svg { width: 26px; height: 26px; fill: currentColor; }
-  .promo-title { font-size: 1.8rem; font-weight: 600; color: var(--ink); margin: 12px 0 10px; letter-spacing: 0.03em; }
-  .promo-sub { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 26px; font-style: italic; }
-  .social-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .promo-icon svg { width: 24px; height: 24px; fill: currentColor; }
+  .promo-title { font-size: 1.65rem; font-weight: 600; color: var(--ink); margin: 10px 0 8px; letter-spacing: 0.03em; }
+  .promo-sub { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 22px; font-style: italic; }
+  .social-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
   .social-btn {
     display: inline-flex; align-items: center; justify-content: center;
-    gap: 10px; padding: 14px 28px; border-radius: 999px;
-    color: #FFFFFF; text-decoration: none; font-size: 0.8rem;
-    font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; min-width: 170px;
+    gap: 8px; padding: 13px 26px; border-radius: 999px;
+    color: #FFFFFF; text-decoration: none; font-size: 0.78rem;
+    font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; min-width: 160px;
   }
-  .btn-instagram { background: linear-gradient(115deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 8px 20px rgba(220, 39, 67, 0.3); }
-  .btn-telegram { background: #0088cc; box-shadow: 0 8px 20px rgba(0, 136, 204, 0.3); }
-  .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+  .btn-instagram { background: linear-gradient(115deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 8px 18px rgba(220, 39, 67, 0.3); }
+  .btn-telegram { background: #0088cc; box-shadow: 0 8px 18px rgba(0, 136, 204, 0.3); }
+  .social-btn svg { width: 17px; height: 17px; fill: currentColor; }
 
-  footer { text-align: center; padding: 30px 20px 60px; color: var(--ink-soft); font-size: .85rem; }
-  footer .script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--gold-dark); display: block; margin-bottom: 6px; font-weight: 700; }
+  footer { text-align: center; padding: 24px 20px 50px; color: var(--ink-soft); font-size: .82rem; }
+  footer .script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; color: var(--gold-dark); display: block; margin-bottom: 4px; font-weight: 700; }
 
   @media (max-width:560px){
-    #hero h1 { font-size: 2.7rem; gap: 8px; }
-    #hero .amp { font-size: 2.5rem; }
-    section { padding: 50px 14px; }
-    .luxury-frame { padding: 36px 18px; }
-    .card { width: 100%; max-width: 280px; }
-    .promo-title { font-size: 1.45rem; }
-    .social-btn { width: 100%; max-width: 260px; }
+    #hero h1 { font-size: 2.5rem; gap: 6px; }
+    #hero .amp { font-size: 2.3rem; }
+    section { padding: 30px 12px; }
+    .luxury-frame { padding: 40px 16px; }
+    .card { width: 100%; max-width: 260px; }
+    .promo-title { font-size: 1.35rem; }
+    .social-btn { width: 100%; max-width: 250px; }
+    .silk-top-left, .silk-bottom-right { width: 120px; height: 120px; }
+    .leaf-top-right, .leaf-bottom-left { width: 95px; height: 95px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- OLTIN GRADIENT TA'RIFI VA UCHIB YURUVCHI ZARRACHALAR -->
+  <!-- OLTIN GRADIENT TA'RIFI -->
   <svg style="width:0;height:0;position:absolute;">
     <defs>
       <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#FCF6BA" />
-        <stop offset="50%" stop-color="#D4AF37" />
-        <stop offset="100%" stop-color="#AA771C" />
+        <stop offset="35%" stop-color="#D4AF37" />
+        <stop offset="70%" stop-color="#AA771C" />
+        <stop offset="100%" stop-color="#8C6211" />
       </linearGradient>
-    </defs>
-  </svg>
 
-  <!-- SVG OLTIN BURCHAK ORNAMENT SHABLONI -->
-  <svg style="display:none;">
-    <g id="gold-corner-svg">
-      <path d="M 0,0 L 45,0 C 45,15 35,35 15,35 C 10,35 0,30 0,45 Z" fill="url(#goldGradient)" />
-      <path d="M 4,4 L 35,4 C 35,12 28,28 12,28 C 8,28 4,24 4,35 Z" fill="#FAF6F0" />
-      <circle cx="12" cy="12" r="3" fill="url(#goldGradient)" />
-    </g>
+      <!-- IPAK DAPERIYA SVG SHABLONI -->
+      <g id="silk-drape-svg">
+        <path d="M0,0 C60,5 120,35 160,90 C120,110 70,120 0,110 Z" fill="url(#goldGradient)" opacity="0.35"/>
+        <path d="M0,0 C40,25 90,65 125,125 C85,140 35,145 0,140 Z" fill="url(#goldGradient)" opacity="0.55"/>
+        <path d="M0,0 C20,35 50,90 85,160 C50,165 15,160 0,155 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M0,0 C70,10 130,50 170,110" stroke="#FCF6BA" stroke-width="2" fill="none" opacity="0.9"/>
+        <path d="M0,0 C50,30 100,80 135,140" stroke="#FCF6BA" stroke-width="1.5" fill="none" opacity="0.8"/>
+      </g>
+
+      <!-- OLTIN BARGLAR SHABLONI -->
+      <g id="gold-leaves-svg">
+        <path d="M110,10 Q80,40 20,110" stroke="url(#goldGradient)" stroke-width="2.5" fill="none"/>
+        <!-- Leaf 1 -->
+        <path d="M100,18 C115,12 125,5 125,5 C125,5 120,18 108,24 C96,30 100,18 100,18 Z" fill="url(#goldGradient)"/>
+        <!-- Leaf 2 -->
+        <path d="M85,32 C102,28 115,22 115,22 C115,22 106,36 94,40 C82,44 85,32 85,32 Z" fill="url(#goldGradient)"/>
+        <!-- Leaf 3 -->
+        <path d="M70,48 C88,46 102,42 102,42 C102,42 91,56 78,58 C65,60 70,48 70,48 Z" fill="url(#goldGradient)"/>
+        <!-- Leaf 4 -->
+        <path d="M52,68 C70,68 84,66 84,66 C84,66 71,78 58,78 C45,78 52,68 52,68 Z" fill="url(#goldGradient)"/>
+        <!-- Leaf 5 -->
+        <path d="M35,88 C52,90 64,90 64,90 C64,90 50,100 38,98 C26,96 35,88 35,88 Z" fill="url(#goldGradient)"/>
+      </g>
+    </defs>
   </svg>
 
   <!-- Musiqa manbasi -->
@@ -525,12 +582,13 @@
 
   <!-- ============ COVER / ENVELOPE ============ -->
   <div id="cover">
-    <div class="cover-inner">
-      <!-- Oltin burchak bezaklari -->
-      <svg class="corner-ornament corner-tl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-      <svg class="corner-ornament corner-tr" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-      <svg class="corner-ornament corner-bl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-      <svg class="corner-ornament corner-br" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
+    <div class="cover-inner luxury-frame">
+      <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+      <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+      <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+      <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+      <div class="sparkle sp-1"></div>
+      <div class="sparkle sp-2"></div>
 
       <div class="ring-icon-wrapper">
         <svg viewBox="0 0 64 64">
@@ -568,11 +626,13 @@
 
     <section id="hero" class="reveal">
       <div class="luxury-frame">
-        <!-- Burchak bezaklari -->
-        <svg class="corner-ornament corner-tl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-tr" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-bl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-br" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
+        <!-- Rasm bezaklari -->
+        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="sparkle sp-1"></div>
+        <div class="sparkle sp-2"></div>
 
         <span class="eyebrow">Nikoh To'yi Taklifnomasi</span>
         <h1>Ali <span class="amp">&amp;</span> Fotima</h1>
@@ -591,13 +651,15 @@
 
     <section id="details" class="reveal">
       <div class="luxury-frame">
-        <svg class="corner-ornament corner-tl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-tr" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-bl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-br" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
+        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="sparkle sp-1"></div>
+        <div class="sparkle sp-2"></div>
 
         <span class="eyebrow">Muhim Kun</span>
-        <h2 style="font-size:2.4rem; font-weight:600; margin-top:6px;">To'y Tafsilotlari</h2>
+        <h2 style="font-size:2.3rem; font-weight:600; margin-top:6px;">To'y Tafsilotlari</h2>
         <div class="divider"><div class="rule"></div><span class="heart">❖</span><div class="rule"></div></div>
 
         <div class="cards">
@@ -627,13 +689,15 @@
 
     <section id="location" class="reveal">
       <div class="luxury-frame">
-        <svg class="corner-ornament corner-tl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-tr" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-bl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-br" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
+        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="sparkle sp-1"></div>
+        <div class="sparkle sp-2"></div>
 
         <span class="eyebrow">Bizni Toping</span>
-        <h2 style="font-size:2.4rem; font-weight:600; margin-top:6px;">Manzil</h2>
+        <h2 style="font-size:2.3rem; font-weight:600; margin-top:6px;">Manzil</h2>
         <div class="divider"><div class="rule"></div><span class="heart">❖</span><div class="rule"></div></div>
 
         <div class="map-wrap">
@@ -650,13 +714,15 @@
 
     <section id="guestbook" class="reveal">
       <div class="luxury-frame">
-        <svg class="corner-ornament corner-tl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-tr" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-bl" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
-        <svg class="corner-ornament corner-br" viewBox="0 0 50 50"><use href="#gold-corner-svg"/></svg>
+        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
+        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="sparkle sp-1"></div>
+        <div class="sparkle sp-2"></div>
 
         <span class="eyebrow">Mehmonlar Kitobi</span>
-        <h2 style="font-size:2.4rem; font-weight:600; margin-top:6px;">Tabriklaringizni Qoldiring</h2>
+        <h2 style="font-size:2.3rem; font-weight:600; margin-top:6px;">Tabriklaringizni Qoldiring</h2>
         <div class="divider"><div class="rule"></div><span class="heart">❖</span><div class="rule"></div></div>
 
         <div class="gb-form">
@@ -709,7 +775,7 @@
     </footer>
   </div>
 
-  <!-- ================= FIREBASE (bulutli mehmonlar kitobi) ================= -->
+  <!-- ================= FIREBASE ================= -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import {
