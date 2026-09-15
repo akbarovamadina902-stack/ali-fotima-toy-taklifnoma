@@ -1,3 +1,6 @@
+
+
+Ali fotima taklifnoma · HTML
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -767,7 +770,7 @@
   const musicIcon = document.getElementById('musicIcon');
   let isPlaying = false;
  
-  bgMusic.volume = 0.50;
+  bgMusic.volume = 0.60;
  
   function playMusic() {
     bgMusic.load();
@@ -779,13 +782,13 @@
       console.log("Audio play error:", err);
     });
   }
-
+ 
   function pauseMusic() {
     bgMusic.pause();
     musicIcon.textContent = '🔇';
     musicToggleBtn.classList.remove('playing');
     isPlaying = false;
-  }  
+  }
  
   function toggleMusic() {
     if (isPlaying) {
