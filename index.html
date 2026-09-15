@@ -583,6 +583,23 @@
   </footer>
 </div>
  
+<!-- Firebase (Guestbook) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC__dXkQXP7HXQArLpwKHALqthBMPp35XA",
+    authDomain: "ali-fotima-toy.firebaseapp.com",
+    projectId: "ali-fotima-toy",
+    storageBucket: "ali-fotima-toy.firebasestorage.app",
+    messagingSenderId: "856503887439",
+    appId: "1:856503887439:web:ef93956d3593421ffcec3a",
+    measurementId: "G-LET2TQ3850"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const guestbookDb = firebase.firestore();
+</script>
+
 <script>
   /* ====== Har bir ramkaga marmar va bezaklarni joylash ====== */
   const DECOR = `
@@ -673,48 +690,100 @@
   const gbSubmit = document.getElementById('gb-submit');
   const gbStatus = document.getElementById('gb-status');
   const gbList = document.getElementById('gb-list');
- 
-  let wishes = [
-    { name:'Otabek va Malika', msg:'Ikki yoshga baxt, omad va mustahkam oila tilaymiz. Qo\'sha qaringlar!', time:'Kecha, 18:30' }
-  ];
- 
-  const escapeHtml = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
- 
+
+  // Eski namunaviy tabrik dizaynda qoladi. Yangi tabriklar Firebase'da saqlanadi.
+  const defaultWish = {
+    name:'Otabek va Malika',
+    msg:'Ikki yoshga baxt, omad va mustahkam oila tilaymiz. Qo\'sha qaringlar!',
+    time:'Kecha, 18:30'
+  };
+
+  let wishes = [];
+
+  const escapeHtml = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  function formatWishTime(timestamp) {
+    if (!timestamp) return 'Hozirgina';
+    const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+    if (Number.isNaN(date.getTime())) return 'Hozirgina';
+    return date.toLocaleString('uz-UZ', {
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
+
   function renderWishes(){
-    if(!wishes.length){
+    const allWishes = [defaultWish, ...wishes];
+    if(!allWishes.length){
       gbList.innerHTML = '<p class="gb-empty">Hozircha tabrik yo\'q. Birinchi bo\'lib yozing.</p>';
       return;
     }
-    gbList.innerHTML = wishes.map(w => `
+    gbList.innerHTML = allWishes.map(w => `
       <div class="gb-entry">
         <div class="top">
           <span class="name">${escapeHtml(w.name)}</span>
-          <span class="time">${escapeHtml(w.time)}</span>
+          <span class="time">${escapeHtml(w.time || formatWishTime(w.createdAt))}</span>
         </div>
-        <p class="msg">${escapeHtml(w.msg)}</p>
+        <p class="msg">${escapeHtml(w.msg ?? w.message)}</p>
       </div>`).join('');
   }
- 
-  gbSubmit.addEventListener('click', () => {
+
+  // Firebase'dagi tabriklar real vaqt rejimida yangilanadi.
+  guestbookDb.collection('guestbook').onSnapshot(snapshot => {
+    wishes = snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        name: data.name || '',
+        msg: data.message || '',
+        createdAt: data.createdAt || null,
+        time: formatWishTime(data.createdAt)
+      };
+    }).sort((a, b) => {
+      const ta = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+      const tb = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+      return tb - ta;
+    });
+    renderWishes();
+  }, error => {
+    console.error('Firebase guestbook xatosi:', error);
+    gbStatus.textContent = 'Tabriklarni yuklashda xatolik yuz berdi.';
+  });
+
+  gbSubmit.addEventListener('click', async () => {
     const name = gbName.value.trim();
     const msg = gbMsg.value.trim();
     if(!name || !msg){
       gbStatus.textContent = 'Ism va tilakni to\'ldiring.';
       return;
     }
+    if(name.length >= 60 || msg.length >= 500){
+      gbStatus.textContent = 'Ism yoki tilak juda uzun.';
+      return;
+    }
+
     gbSubmit.disabled = true;
     gbStatus.textContent = 'Yuborilmoqda...';
-    setTimeout(() => {
-      wishes.unshift({ name, msg, time:'Hozirgina' });
-      renderWishes();
+
+    try {
+      await guestbookDb.collection('guestbook').add({
+        name: name,
+        message: msg,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+
       gbName.value = '';
       gbMsg.value = '';
-      gbSubmit.disabled = false;
       gbStatus.textContent = 'Tabrikingiz uchun rahmat ✦';
       setTimeout(() => { gbStatus.textContent = ''; }, 4000);
-    }, 600);
+    } catch (error) {
+      console.error('Firebase guestbook yozish xatosi:', error);
+      gbStatus.textContent = 'Yuborishda xatolik. Keyinroq urinib ko\'ring.';
+    } finally {
+      gbSubmit.disabled = false;
+    }
   });
- 
+
   renderWishes();
 </script>
 </body>
