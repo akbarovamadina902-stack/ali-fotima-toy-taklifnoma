@@ -16,8 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream-bg: #F8F4EE;
-    --marble-card: #FAF6F0;
     --ink: #2C221E;
     --ink-soft: #6E6059;
     --gold: #D4AF37;
@@ -25,6 +23,7 @@
     --gold-dark: #9A7422;
     --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
     --gold-btn: linear-gradient(120deg, #D4AF37, #AA771C);
+    --gold-btn-dark: linear-gradient(120deg, #B38728, #8C6211);
     --white: #FFFFFF;
   }
 
@@ -69,29 +68,25 @@
     font-size: 0.9rem; 
   }
 
-  /* ===== RASMDAGI BIR XIL MARMAR + IPAK + OLTIN BARGLAR RAMKASI ===== */
+  /* ===== MARMAR OLTIN RAMKA ===== */
   .luxury-frame {
     position: relative;
-    background: 
-      radial-gradient(circle at 10% 20%, rgba(240, 230, 215, 0.6) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(240, 230, 215, 0.6) 0%, transparent 40%),
-      linear-gradient(135deg, #FAF7F2 0%, #F5EDE0 50%, #FAF5EE 100%);
+    background: #FAF6F0 url('images/marble-bg.jpg') center/cover no-repeat;
     border-radius: 20px;
-    padding: 55px 32px;
+    padding: 65px 35px;
     margin: 25px auto;
     box-shadow: 
-      0 15px 45px rgba(154, 116, 34, 0.12),
+      0 15px 45px rgba(154, 116, 34, 0.15),
       inset 0 0 40px rgba(255, 255, 255, 0.8);
     overflow: hidden;
     z-index: 1;
   }
 
-  /* Ikkilangan Nozik Oltin Chegara (Double Thin Gold Border) */
   .luxury-frame::before {
     content: "";
     position: absolute;
-    inset: 14px;
-    border: 1px solid rgba(212, 175, 55, 0.6);
+    inset: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.75);
     border-radius: 12px;
     pointer-events: none;
     z-index: 3;
@@ -99,48 +94,45 @@
   .luxury-frame::after {
     content: "";
     position: absolute;
-    inset: 18px;
-    border: 1px solid rgba(212, 175, 55, 0.35);
+    inset: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 10px;
     pointer-events: none;
     z-index: 3;
   }
 
-  /* YUQORI CHAP VA PASTKI O'NG IPAK TO'L QATLAMNOMA (SILK DRAPES) */
-  .silk-top-left {
+  .corner-decor {
     position: absolute;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  .decor-top-left {
     top: 0; left: 0;
-    width: 170px; height: 170px;
-    pointer-events: none;
-    z-index: 4;
+    width: 180px; height: 180px;
+    background: url('images/gold-silk-top-left.png') top left/contain no-repeat;
   }
-  .silk-bottom-right {
-    position: absolute;
+
+  .decor-bottom-right {
     bottom: 0; right: 0;
-    width: 170px; height: 170px;
+    width: 180px; height: 180px;
+    background: url('images/gold-silk-top-left.png') top left/contain no-repeat;
     transform: rotate(180deg);
-    pointer-events: none;
-    z-index: 4;
   }
 
-  /* YUQORI O'NG VA PASTKI CHAP OLTIN BARGLAR NOVDASI (GOLD LEAVES) */
-  .leaf-top-right {
-    position: absolute;
-    top: -5px; right: -5px;
-    width: 130px; height: 130px;
-    pointer-events: none;
-    z-index: 4;
-  }
-  .leaf-bottom-left {
-    position: absolute;
-    bottom: -5px; left: -5px;
-    width: 130px; height: 130px;
-    transform: rotate(180deg);
-    pointer-events: none;
-    z-index: 4;
+  .decor-top-right {
+    top: 0; right: 0;
+    width: 150px; height: 150px;
+    background: url('images/gold-leaf-branch.png') top right/contain no-repeat;
   }
 
-  /* YORQIN PORLASH NQTALARI (GLOW SPARKLES) */
+  .decor-bottom-left {
+    bottom: 0; left: 0;
+    width: 150px; height: 150px;
+    background: url('images/gold-leaf-branch.png') top right/contain no-repeat;
+    transform: rotate(180deg);
+  }
+
   .sparkle {
     position: absolute;
     width: 8px; height: 8px;
@@ -150,8 +142,8 @@
     pointer-events: none;
     z-index: 5;
   }
-  .sp-1 { top: 14px; right: 130px; }
-  .sp-2 { bottom: 14px; left: 130px; }
+  .sp-1 { top: 18px; right: 140px; }
+  .sp-2 { bottom: 18px; left: 140px; }
 
   /* ===== OLTIN ZARRACHALAR ANIMATSIYASI ===== */
   .hearts-container {
@@ -470,7 +462,7 @@
   .gb-entry .msg { margin-top: 5px; font-style: italic; color: var(--ink-soft); font-size: .92rem; line-height: 1.45; }
   .gb-empty { text-align: center; color: var(--ink-soft); font-style: italic; font-size: .92rem; }
 
-  /* PROMO */
+  /* PROMO (HAMMASI TILLARANG GA O'ZGARDI) */
   #promo { padding: 20px 16px; }
   .promo-card {
     background: rgba(255, 255, 255, 0.92);
@@ -501,8 +493,16 @@
     color: #FFFFFF; text-decoration: none; font-size: 0.78rem;
     font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; min-width: 160px;
   }
-  .btn-instagram { background: linear-gradient(115deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 8px 18px rgba(220, 39, 67, 0.3); }
-  .btn-telegram { background: #0088cc; box-shadow: 0 8px 18px rgba(0, 136, 204, 0.3); }
+  
+  /* KO'K VA BINAFLSHA TUGMALAR OLTIN GRADIENTGA ALMASHTIRILDI */
+  .btn-instagram { 
+    background: var(--gold-btn); 
+    box-shadow: 0 8px 18px rgba(170, 119, 28, 0.35); 
+  }
+  .btn-telegram { 
+    background: var(--gold-btn-dark); 
+    box-shadow: 0 8px 18px rgba(140, 98, 17, 0.35); 
+  }
   .social-btn svg { width: 17px; height: 17px; fill: currentColor; }
 
   footer { text-align: center; padding: 24px 20px 50px; color: var(--ink-soft); font-size: .82rem; }
@@ -512,18 +512,18 @@
     #hero h1 { font-size: 2.5rem; gap: 6px; }
     #hero .amp { font-size: 2.3rem; }
     section { padding: 30px 12px; }
-    .luxury-frame { padding: 40px 16px; }
+    .luxury-frame { padding: 45px 16px; }
     .card { width: 100%; max-width: 260px; }
     .promo-title { font-size: 1.35rem; }
     .social-btn { width: 100%; max-width: 250px; }
-    .silk-top-left, .silk-bottom-right { width: 120px; height: 120px; }
-    .leaf-top-right, .leaf-bottom-left { width: 95px; height: 95px; }
+    .decor-top-left, .decor-bottom-right { width: 130px; height: 130px; }
+    .decor-top-right, .decor-bottom-left { width: 110px; height: 110px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- OLTIN GRADIENT TA'RIFI -->
+  <!-- OLTIN GRADIENT SVG -->
   <svg style="width:0;height:0;position:absolute;">
     <defs>
       <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -532,30 +532,6 @@
         <stop offset="70%" stop-color="#AA771C" />
         <stop offset="100%" stop-color="#8C6211" />
       </linearGradient>
-
-      <!-- IPAK DAPERIYA SVG SHABLONI -->
-      <g id="silk-drape-svg">
-        <path d="M0,0 C60,5 120,35 160,90 C120,110 70,120 0,110 Z" fill="url(#goldGradient)" opacity="0.35"/>
-        <path d="M0,0 C40,25 90,65 125,125 C85,140 35,145 0,140 Z" fill="url(#goldGradient)" opacity="0.55"/>
-        <path d="M0,0 C20,35 50,90 85,160 C50,165 15,160 0,155 Z" fill="url(#goldGradient)" opacity="0.85"/>
-        <path d="M0,0 C70,10 130,50 170,110" stroke="#FCF6BA" stroke-width="2" fill="none" opacity="0.9"/>
-        <path d="M0,0 C50,30 100,80 135,140" stroke="#FCF6BA" stroke-width="1.5" fill="none" opacity="0.8"/>
-      </g>
-
-      <!-- OLTIN BARGLAR SHABLONI -->
-      <g id="gold-leaves-svg">
-        <path d="M110,10 Q80,40 20,110" stroke="url(#goldGradient)" stroke-width="2.5" fill="none"/>
-        <!-- Leaf 1 -->
-        <path d="M100,18 C115,12 125,5 125,5 C125,5 120,18 108,24 C96,30 100,18 100,18 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 2 -->
-        <path d="M85,32 C102,28 115,22 115,22 C115,22 106,36 94,40 C82,44 85,32 85,32 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 3 -->
-        <path d="M70,48 C88,46 102,42 102,42 C102,42 91,56 78,58 C65,60 70,48 70,48 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 4 -->
-        <path d="M52,68 C70,68 84,66 84,66 C84,66 71,78 58,78 C45,78 52,68 52,68 Z" fill="url(#goldGradient)"/>
-        <!-- Leaf 5 -->
-        <path d="M35,88 C52,90 64,90 64,90 C64,90 50,100 38,98 C26,96 35,88 35,88 Z" fill="url(#goldGradient)"/>
-      </g>
     </defs>
   </svg>
 
@@ -583,10 +559,10 @@
   <!-- ============ COVER / ENVELOPE ============ -->
   <div id="cover">
     <div class="cover-inner luxury-frame">
-      <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-      <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-      <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-      <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+      <div class="corner-decor decor-top-left"></div>
+      <div class="corner-decor decor-bottom-right"></div>
+      <div class="corner-decor decor-top-right"></div>
+      <div class="corner-decor decor-bottom-left"></div>
       <div class="sparkle sp-1"></div>
       <div class="sparkle sp-2"></div>
 
@@ -626,11 +602,10 @@
 
     <section id="hero" class="reveal">
       <div class="luxury-frame">
-        <!-- Rasm bezaklari -->
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
@@ -651,10 +626,10 @@
 
     <section id="details" class="reveal">
       <div class="luxury-frame">
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
@@ -689,10 +664,10 @@
 
     <section id="location" class="reveal">
       <div class="luxury-frame">
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
@@ -714,10 +689,10 @@
 
     <section id="guestbook" class="reveal">
       <div class="luxury-frame">
-        <svg class="silk-top-left" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="silk-bottom-right" viewBox="0 0 170 170"><use href="#silk-drape-svg"/></svg>
-        <svg class="leaf-top-right" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
-        <svg class="leaf-bottom-left" viewBox="0 0 130 130"><use href="#gold-leaves-svg"/></svg>
+        <div class="corner-decor decor-top-left"></div>
+        <div class="corner-decor decor-bottom-right"></div>
+        <div class="corner-decor decor-top-right"></div>
+        <div class="corner-decor decor-bottom-left"></div>
         <div class="sparkle sp-1"></div>
         <div class="sparkle sp-2"></div>
 
@@ -762,7 +737,7 @@
             INSTAGRAM
           </a>
           <a href="https://t.me/Akbarova_Madina_Akbarovna" target="_blank" rel="noopener" class="social-btn btn-telegram btn-shake">
-            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373-12-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.536-.194 1.006.128.832.941z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373-12-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-3.235l2.308-1.4 12.138-4.68c.577-.208 1.082.137.914.921z"/></svg>
             TELEGRAM
           </a>
         </div>
@@ -771,194 +746,163 @@
 
     <footer>
       <span class="script">Ali &amp; Fotima</span>
-      Sizni kutamiz, 30-sentyabr 2026
+      <p>Tashrifingizdan mamnun bo'lamiz!</p>
     </footer>
+
   </div>
 
-  <!-- ================= FIREBASE ================= -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import {
-      getFirestore, collection, addDoc, onSnapshot,
-      query, orderBy, serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  <script>
+    // Audio Player Setup
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggleBtn = document.getElementById('musicToggleBtn');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyC__dXdQXP7HxQArLpwkHALqthBMPp35XA",
-      authDomain: "ali-fotima-toy.firebaseapp.com",
-      projectId: "ali-fotima-toy",
-      storageBucket: "ali-fotima-toy.firebasestorage.app",
-      messagingSenderId: "856503887439",
-      appId: "1:856503887439:web:ef93956d3593421ffcec3a",
-      measurementId: "G-LTE2TQ3850"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const guestbookRef = collection(db, "guestbook");
-
-    function escapeHtml(str){
-      const d = document.createElement('div');
-      d.textContent = str || '';
-      return d.innerHTML;
+    function toggleMusic() {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicIcon.textContent = '🔇';
+        musicToggleBtn.classList.remove('playing');
+        isPlaying = false;
+      } else {
+        bgMusic.play().then(() => {
+          musicIcon.textContent = '🎵';
+          musicToggleBtn.classList.add('playing');
+          isPlaying = true;
+        }).catch(() => {});
+      }
     }
 
-    function formatTime(ts){
-      try{
-        const dt = ts && ts.toDate ? ts.toDate() : new Date();
-        return dt.toLocaleDateString('uz-UZ', {day:'2-digit', month:'short'}) + ' ' + dt.toLocaleTimeString('uz-UZ',{hour:'2-digit',minute:'2-digit'});
-      } catch(e){ return ''; }
+    musicToggleBtn.addEventListener('click', toggleMusic);
+
+    // Envelope Open logic
+    const cover = document.getElementById('cover');
+    const main = document.getElementById('main');
+    const envelope = document.getElementById('envelope');
+    const openBtn = document.getElementById('openBtn');
+
+    function openInvitation() {
+      envelope.classList.add('open');
+      toggleMusic();
+      
+      setTimeout(() => {
+        cover.classList.add('hidden');
+        main.classList.add('show');
+        checkScroll();
+      }, 900);
     }
 
-    const listEl = document.getElementById('gb-list');
-    const gbQuery = query(guestbookRef, orderBy('time', 'desc'));
+    envelope.addEventListener('click', openInvitation);
+    openBtn.addEventListener('click', openInvitation);
 
-    onSnapshot(gbQuery, (snapshot) => {
-      if(snapshot.empty){
-        listEl.innerHTML = '<div class="gb-empty">Hozircha tabriklar yo\'q — birinchi bo\'ling!</div>';
+    // Countdown Timer logic
+    const targetDate = new Date('2026-09-30T19:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
         return;
       }
-      listEl.innerHTML = snapshot.docs.map(docSnap => {
-        const en = docSnap.data();
-        return `
-          <div class="gb-entry">
-            <div class="top">
-              <span class="name">${escapeHtml(en.name)}</span>
-              <span class="time">${formatTime(en.time)}</span>
-            </div>
-            <div class="msg">${escapeHtml(en.message)}</div>
-          </div>
-        `;
-      }).join('');
-    }, (err) => {
-      listEl.innerHTML = '<div class="gb-empty">Tabriklarni yuklab bo\'lmadi. Internetni tekshiring.</div>';
-      console.error('Firestore error:', err);
-    });
 
-    document.getElementById('gb-submit').addEventListener('click', async () => {
-      const nameEl = document.getElementById('gb-name');
-      const msgEl = document.getElementById('gb-msg');
-      const statusEl = document.getElementById('gb-status');
-      const btn = document.getElementById('gb-submit');
-      const name = nameEl.value.trim();
-      const message = msgEl.value.trim();
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-      if(!name || !message){ statusEl.textContent = "Ism va tilak maydonlarini to'ldiring."; return; }
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
 
-      btn.disabled = true;
-      statusEl.textContent = "Yuborilmoqda...";
-      try{
-        await addDoc(guestbookRef, { name, message, time: serverTimestamp() });
-        statusEl.textContent = "Rahmat! Tabrikingiz qo'shildi.";
-        nameEl.value = ''; msgEl.value = '';
-      } catch(e){
-        statusEl.textContent = "Xatolik yuz berdi. Qayta urinib ko'ring.";
-        console.error('Firestore write error:', e);
-      }
-      btn.disabled = false;
-    });
-  </script>
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-<script>
-  // ---------- Scroll Reveal Observer ----------
-  function initScrollReveal() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+    // Scroll Reveal logic
+    const reveals = document.querySelectorAll('.reveal');
+
+    function checkScroll() {
+      const triggerBottom = window.innerHeight * 0.88;
+      reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < triggerBottom) {
+          el.classList.add('active');
         }
       });
-    }, {
-      threshold: 0.15
-    });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  }
-
-  // ---------- Music Control ----------
-  const bgMusic = document.getElementById('bgMusic');
-  const musicToggleBtn = document.getElementById('musicToggleBtn');
-  const musicIcon = document.getElementById('musicIcon');
-  let isPlaying = false;
-
-  bgMusic.volume = 0.50;
-
-  function playMusic() {
-    bgMusic.load();
-    bgMusic.play().then(() => {
-      musicIcon.textContent = '🎵';
-      musicToggleBtn.classList.add('playing');
-      isPlaying = true;
-    }).catch(err => {
-      console.log("Audio play error:", err);
-    });
-  }
-
-  function pauseMusic() {
-    bgMusic.pause();
-    musicIcon.textContent = '🔇';
-    musicToggleBtn.classList.remove('playing');
-    isPlaying = false;
-  }   
-
-  function toggleMusic() {
-    if (isPlaying) {
-      pauseMusic();
-    } else {
-      playMusic();
-    }
-  }
-
-  musicToggleBtn.addEventListener('click', toggleMusic);
-
-  // ---------- Envelope open ----------
-  const envelope = document.getElementById('envelope');
-  const openBtn = document.getElementById('openBtn');
-  const cover = document.getElementById('cover');
-  const main = document.getElementById('main');
-
-  function openEnvelope() {
-    envelope.classList.add('open');
-    playMusic();
-
-    setTimeout(() => {
-      cover.classList.add('hidden');
-      main.classList.add('show');
-      initScrollReveal();
-    }, 900);
-  }
-
-  envelope.addEventListener('click', openEnvelope);
-  openBtn.addEventListener('click', openEnvelope);
-
-  // ---------- Countdown ----------
-  const targetDate = new Date('2026-09-30T19:00:00+05:00').getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '00';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent = '00';
-      document.getElementById('cd-secs').textContent = '00';
-      return;
     }
 
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((diff % (1000 * 60)) / 1000);
+    window.addEventListener('scroll', checkScroll);
 
-    document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
-    document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
-    document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
-    document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
-  }
+    // Guestbook logic
+    const gbName = document.getElementById('gb-name');
+    const gbMsg = document.getElementById('gb-msg');
+    const gbSubmit = document.getElementById('gb-submit');
+    const gbStatus = document.getElementById('gb-status');
+    const gbList = document.getElementById('gb-list');
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
+    let wishes = [
+      { name: 'Otabek & Malika', msg: 'Ikki yoshga baxt, omad va mustahkam oila tilaymiz! Qo\'sha qarishinglar!', time: 'Kecha, 18:30' }
+    ];
+
+    function renderWishes() {
+      if (wishes.length === 0) {
+        gbList.innerHTML = '<div class="gb-empty">Hali hech kim tabrik qoldirmadi. Birinchi bo\'ling!</div>';
+        return;
+      }
+      gbList.innerHTML = wishes.map(item => `
+        <div class="gb-entry">
+          <div class="top">
+            <span class="name">${escapeHtml(item.name)}</span>
+            <span class="time">${escapeHtml(item.time)}</span>
+          </div>
+          <div class="msg">"${escapeHtml(item.msg)}"</div>
+        </div>
+      `).join('');
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    gbSubmit.addEventListener('click', () => {
+      const name = gbName.value.trim();
+      const msg = gbMsg.value.trim();
+
+      if (!name || !msg) {
+        gbStatus.style.color = '#B38728';
+        gbStatus.textContent = 'Iltimos, ismingiz va tilagingizni kiriting.';
+        return;
+      }
+
+      gbSubmit.disabled = true;
+      gbStatus.style.color = 'var(--gold-dark)';
+      gbStatus.textContent = 'Yuborilmoqda...';
+
+      setTimeout(() => {
+        wishes.unshift({
+          name: name,
+          msg: msg,
+          time: 'Hozirgina'
+        });
+        renderWishes();
+
+        gbName.value = '';
+        gbMsg.value = '';
+        gbSubmit.disabled = false;
+        gbStatus.style.color = 'var(--gold-dark)';
+        gbStatus.textContent = 'Tabrikingiz uchun rahmat! ✨';
+
+        setTimeout(() => { gbStatus.textContent = ''; }, 4000);
+      }, 600);
+    });
+
+    renderWishes();
+  </script>
 </body>
 </html>
